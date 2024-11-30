@@ -13,9 +13,9 @@ extern "C"{
 
     void MainInit();
     void MainDeviceInit();
-    void mainDeviceRoutine();
+    void MainDeviceRoutine();
     void MainTaskInit();
-    void mainTaskRoutine();
+    void MainTaskRoutine();
 
 #ifdef __cplusplus
 }

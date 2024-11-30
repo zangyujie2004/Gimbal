@@ -3,7 +3,10 @@
 //
 #include "User_Main.h"
 #include "User_RemoteDevice.h"
+#include "User_RemoteTask.h"
 #include "User_CanDevice.h"
+#include "User_MotorDevice.h"
+#include "User_GimbalTask.h"
 #include "tim.h"
 #include "iwdg.h"
 
@@ -21,17 +24,29 @@ void MainInit()
 void MainDeviceInit()
 {
     RemoteDeviceInit();
-    CANDeviceInit();
+    CanDeviceInit();
 }
 void MainTaskInit()
 {
-    //remoteControlTaskInit();
-    //gimbalTaskInit();
+    RemoteTaskInit();
+    GimbalTaskInit();
 }
 
-void mainDeviceRoutine()
+void MainRoutine()
 {
-    canDeviceRoutine();
+    MainDeviceRoutine();
+    MainTaskRoutine();
+}
+
+void MainDeviceRoutine()
+{
+    MotorDeviceRoutine();
+    CanDeviceRoutine();
     HAL_IWDG_Refresh(&hiwdg);
 }
 
+void MainTaskRoutine()
+{
+    RemoteTaskRoutine();
+    GimbalTaskRoutine();
+}

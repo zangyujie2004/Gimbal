@@ -7,6 +7,11 @@
 
 #include "can.h"
 
-void CANDeviceInit();
+namespace CanRx
+{
+    void handle(CAN_HandleTypeDef* hcan);
+}
 
+void CanDeviceInit();
+void CanDeviceRoutine();
 #endif //USER_CANDEVICE_H
