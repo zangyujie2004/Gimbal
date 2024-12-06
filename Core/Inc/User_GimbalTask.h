@@ -14,7 +14,7 @@ public:
     float angleMin;   // 最小角度
     float angleMax;   // 最大角度
 
-    // 构造函数，去除前馈控制参数
+    // 构造函数
     MotorAnglePitch(MotorType_t* pMotorType, PID* pPidSpeed, PID* pPidAngle, float pAngleMin, float pAngleMax);
 
     // 更新控制

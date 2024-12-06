@@ -5,6 +5,7 @@
 #include "User_RemoteDevice.h"
 #include "usart.h"
 #include "User_LinearMapping.h"
+#include "cstring"
 
 uint8_t rcRxBuf[RC_RX_BUF_SIZE];
 uint8_t rcRxData[RC_RX_DATA_SIZE];
@@ -17,14 +18,6 @@ void RemoteDeviceInit() {
     remote.init();  // 初始化遥控器
     memset(rcRxBuf, 0, sizeof(rcRxBuf));  // 清空缓冲区
     memset(rcRxData, 0, sizeof(rcRxData));  // 清空接收数据
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart)
-{
-    if (huart == &huart3)
-    {
-        remote.frameHandle();
-    }
 }
 
 void Remote::init()

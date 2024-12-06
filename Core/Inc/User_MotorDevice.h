@@ -48,8 +48,12 @@ struct MotorState_t
 // 电机控制单元 (包含 PID 控制器)
 struct MotorControlUnit_t
 {
-    float targetValue;        // 目标值
-    PID pid;                  // PID 控制器
+    float targetValue;  // 目标值
+    PID pid;            // PID 控制器
+
+    // 带 PID 参数的构造函数
+    MotorControlUnit_t(PID& pPid)
+        : targetValue(0), pid(pPid) {}
 
     // 计算控制输出
     float compute(float actualValue)
@@ -57,6 +61,8 @@ struct MotorControlUnit_t
         return pid.calc(targetValue, actualValue);
     }
 };
+
+
 
 // 电机基类
 class Motor
@@ -88,28 +94,23 @@ public:
     void Start() { setMotorState(false); }
 };
 
-// 电机速度类（继承自 Motor）
-// 电机速度类（继承自 Motor）
+
 class MotorSpeed : public Motor
 {
 public:
-    MotorControlUnit_t controlSpeed;    // 控制速度的 PID 控制器
-
+    MotorControlUnit_t controlSpeed;
     MotorSpeed(MotorType_t* pMotorType, PID* pPidSpeed);
     void updateControl() override;
-    void setSpeed(float speed);         // 设置目标速度
+    virtual void setSpeed(float speed);
 };
-
-// 电机角度类（继承自 MotorSpeed）
-class MotorAngle : public MotorSpeed
+class  MotorAngle : public MotorSpeed
 {
 public:
-    MotorControlUnit_t controlAngle;    // 控制角度的 PID 控制器
-
+    MotorControlUnit_t controlAngle;
     MotorAngle(MotorType_t* pMotorType, PID* pPidSpeed, PID* pPidAngle);
     void updateControl() override;
-    void setAngle(float angle);         // 设置目标角度
-    void zeroSet();                     // 归零
+    virtual void setAngle(float angle);
+    void zeroSet();
 private:
     using MotorSpeed::setSpeed;
 };
@@ -119,7 +120,6 @@ class MotorSet
 {
 public:
     MotorSet();
-    ~MotorSet();
     void Append(Motor* motorPtr, uint8_t canLine, uint8_t controllerId);
     Motor* getMotorById(uint8_t canLine, uint8_t controllerId);
 
@@ -138,8 +138,8 @@ public:
     Iterator end();
 
 protected:
-    Motor* motorMap[2][12] = {nullptr};
-    Motor* motorList[24] = {nullptr};
+    Motor* motorMap[2][12] = {NULL};
+    Motor* motorList[24] = {NULL};
     uint8_t size;
 };
 

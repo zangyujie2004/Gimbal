@@ -2,7 +2,7 @@
 // Created by Administrator on 24-11-23.
 //
 #include "User_CanDevice.h"
-#include "string.h"
+#include "cstring"
 #include "User_MotorDevice.h"
 
 void CanDeviceInit()

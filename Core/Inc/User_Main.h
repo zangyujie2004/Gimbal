@@ -12,6 +12,7 @@ extern "C"{
 #include "main.h"
 
     void MainInit();
+    void MainRoutine();
     void MainDeviceInit();
     void MainDeviceRoutine();
     void MainTaskInit();

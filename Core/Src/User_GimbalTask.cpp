@@ -17,16 +17,9 @@ MotorAnglePitch::MotorAnglePitch(MotorType_t* pMotorType, PID* pPidSpeed, PID* p
 // 更新电机控制输出
 void MotorAnglePitch::updateControl()
 {
-    // 如果电机停止，输出强度为 0
-    if (stopFlag)
-    {
-        outputIntensity = 0;
-        return;
-    }
-
     // 计算角度反馈的PID输出
-    controlSpeed.targetValue = controlAngle.compute(state.angle);  // 设置速度目标
-    outputIntensity = controlSpeed.compute(state.speed);  // 只计算PID控制输出，无前馈
+    controlSpeed.targetValue = controlAngle.compute(state.angle);
+    outputIntensity = controlSpeed.compute(state.speed);
 }
 
 // 辅助函数：限制数值在指定范围内
@@ -64,7 +57,7 @@ MotorAnglePitch motorPitch(&gm6020_v, &pidPitchSpeed, &pidPitchAngle, -62.5, 0);
 void GimbalTaskInit()
 {
     // 初始化 motorPitch，设置电机控制器和CAN ID
-    motorSet.Append(&motorPitch, 1, 5);  // 假设 motorPitch 是预定义的电机对象
+    motorSet.Append(&motorPitch, 1, 1);  // 假设 motorPitch 是预定义的电机对象
 }
 
 // 电机控制任务
@@ -75,17 +68,8 @@ void GimbalTaskRoutine()
     {
         // 更新电机控制
         motorPtr->updateControl();
+        motorPtr->Start();
 
-        // 如果电机需要停止，则调用 Stop()
-        if (motorPtr->stopFlag)
-        {
-            motorPtr->Stop();
-        }
-        else
-        {
-            // 启动电机
-            motorPtr->Start();
-        }
     }
 }
 

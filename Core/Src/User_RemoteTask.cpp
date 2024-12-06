@@ -5,7 +5,7 @@
 #include "User_RemoteTask.h"
 #include "User_RemoteDevice.h"
 #include "User_MotorDevice.h"
-#include "User_RemoteTask.h"
+#include "User_GimbalTask.h"
 #include "vector"
 
 // 假设有一个存储电机对象的集合
@@ -13,6 +13,7 @@ extern Remote remote;  // 外部引用遥控器对象
 //extern MotorAnglePitch motorPitch;   // 外部引用pitch电机
 //extern MotorYawPitch motorYaw;  // 外部引用yaw电机
 //extern std::vector<Motor*> motorSet; // 电机集合
+extern MotorAnglePitch motorPitch;
 
 void RemoteTaskInit()
 {
@@ -37,7 +38,7 @@ void RemoteTaskRoutine()
 
             // 3. 使用左摇杆来控制云台的 pitch 和 yaw 角度
             // 左摇杆上下控制 pitch 角度变化
-            //motorPitch.addToAngle(remoteControl.channel_.l_row * (-0.05f)); // 根据上下摇杆控制 pitch
+            motorPitch.addToAngle(remote.channel_.l_row * (-0.05f)); // 根据上下摇杆控制 pitch
 
             // 左摇杆水平拨动控制 yaw 角度变化
             //motorYaw.addToAngle(remoteControl.channel_.l_col * (-0.05f)); // 根据左右摇杆控制 yaw

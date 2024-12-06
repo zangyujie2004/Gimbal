@@ -6,10 +6,6 @@
 #define USER_REMOTETASK_H
 
 
-#include "main.h"
-#include "User_RemoteDevice.h"
-#include "motorDevice.h"
-
 // 远程控制任务初始化函数
 void RemoteTaskInit();
 

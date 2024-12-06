@@ -12,6 +12,16 @@ Motor::Motor(MotorType_t* pMotorType)
     stopFlag = true;
 }
 
+MotorSpeed::MotorSpeed(MotorType_t* pMotorType, PID* pPidSpeed) : Motor(pMotorType), controlSpeed(*pPidSpeed) {
+    // controlSpeed 通过构造函数初始化，不需要再赋值
+}
+
+MotorAngle::MotorAngle(MotorType_t* pMotorType, PID* pPidSpeed, PID* pPidAngle)
+    : MotorSpeed(pMotorType, pPidSpeed), controlAngle(*pPidAngle) {
+    // controlAngle 通过构造函数初始化，不需要再赋值
+}
+
+
 // 设置硬件信息
 void Motor::setHardwareInfo(uint8_t pCanLine, uint8_t pControllerId)
 {
@@ -98,6 +108,7 @@ void MotorAngle::zeroSet()
     state.angleInt = 0;
     state.angle = 0;
 }
+
 
 // 电机集合构造函数
 MotorSet::MotorSet() : size(0) {}
