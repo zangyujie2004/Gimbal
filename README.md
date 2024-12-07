@@ -3,6 +3,25 @@
 <div style="font-size:16px"><span style="float:right">By: Yujie Zang 23/11/2024 </div>
 
 ---
+```pseudocode
++-----------------------+
+|       Layer 2         |
+|-----------------------|
+|      User_Main        |
+|      User_Gimbal      |
++-----------+-----------+
+            |
+            v
++-----------+-----------+
+|       Layer 1         |
+|-----------------------|
+|      User_IMU         |
+|      User_Motor       |
+|      User_PID         |
++-----------------------+
+
+```
+
 ## Task1: Construct a System Framework
 
 Here’s a framework to implement the described functionality, designed with modularity, clarity, and extensibility in mind. This architecture is flexible and supports incremental optimization as the project progresses.
