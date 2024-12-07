@@ -1,23 +1,33 @@
 //
-// Created by Administrator on 24-11-23.
+// Created by Administrator on 24-12-7.
 //
 
-#ifndef PID_H
-#define PID_H
-class PID
-{
-public:
-    PID(float kp, float ki, float kd, float i_max, float out_max);
+#ifndef USER_PID_H
+#define USER_PID_H
 
-    float calc(float ref, float fdb);
-
-private:
-    float kp_, ki_, kd_;
-    float i_max_, out_max_;
-    float output_;
-    float ref_, fdb_;
-    float err_, err_sum_, last_err_;
-    float pout_, iout_, dout_;
+struct PIDInitStruct {
+    float _kp;
+    float _ki;
+    float _kd;
+    float _i_max; // error_sum限幅
+    float _out_max; // 总输出限幅
 };
 
-#endif //PID_H
+class PID {
+public:
+    PID();
+    PID(const PIDInitStruct& pid_init_struct);
+    float calculate(float ref, float fdb);
+
+private:
+    float error_[2]; // 0 for current, 1 for last
+    float error_sum_;
+    float ref_, fdb_;
+    float kp_, ki_, kd_;
+    float p_out_, i_out_, d_out_;
+    float i_max_;
+    float out_max_;
+    float output_;
+};
+
+#endif //USER_PID_H

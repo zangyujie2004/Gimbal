@@ -135,7 +135,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3 />
+          <Flash3>"" ()</Flash3>
           <Flash4 />
           <pFcarmOut />
           <pFcarmGrp />
@@ -392,29 +392,9 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>User_RemoteTask.cpp</FileName>
+              <FileName>User_Gimbal.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_RemoteTask.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>User_RemoteDevice.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_RemoteDevice.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>User_PID.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_PID.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>User_MotorDevice.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_MotorDevice.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>User_GimbalTask.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_GimbalTask.cpp</FilePath>
+              <FilePath>..\Core\Src\User_Gimbal.cpp</FilePath>
             </File>
             <File>
               <FileName>User_Main.cpp</FileName>
@@ -422,14 +402,14 @@
               <FilePath>..\Core\Src\User_Main.cpp</FilePath>
             </File>
             <File>
-              <FileName>User_Callback.cpp</FileName>
+              <FileName>User_Motor.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_Callback.cpp</FilePath>
+              <FilePath>..\Core\Src\User_Motor.cpp</FilePath>
             </File>
             <File>
-              <FileName>User_CanDevice.cpp</FileName>
+              <FileName>User_PID.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Core\Src\User_CanDevice.cpp</FilePath>
+              <FilePath>..\Core\Src\User_PID.cpp</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
@@ -447,9 +427,9 @@
               <FilePath>../Core/Src/can.c</FilePath>
             </File>
             <File>
-              <FileName>dma.c</FileName>
+              <FileName>spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Core/Src/dma.c</FilePath>
+              <FilePath>../Core/Src/spi.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -491,54 +471,18 @@
                     <v6WtE>2</v6WtE>
                     <v6Rtti>2</v6Rtti>
                   </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Core/Src/iwdg.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>1</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
+                  <Aads>
                     <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
                     <Ropi>2</Ropi>
                     <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
+                    <thumb>2</thumb>
+                    <SplitLS>2</SplitLS>
+                    <SwStkChk>2</SwStkChk>
+                    <NoWarn>2</NoWarn>
                     <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
                     <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                  </Cads>
+                    <ClangAsOpt>1</ClangAsOpt>
+                  </Aads>
                 </FileArmAds>
               </FileOption>
             </File>
@@ -589,11 +533,6 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Core/Src/usart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_it.c</FileName>
@@ -681,9 +620,9 @@
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_hal_iwdg.c</FileName>
+              <FileName>stm32f4xx_hal_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c</FilePath>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -725,6 +664,18 @@
                     <v6WtE>2</v6WtE>
                     <v6Rtti>2</v6Rtti>
                   </Cads>
+                  <Aads>
+                    <interw>2</interw>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <thumb>2</thumb>
+                    <SplitLS>2</SplitLS>
+                    <SwStkChk>2</SwStkChk>
+                    <NoWarn>2</NoWarn>
+                    <uSurpInc>2</uSurpInc>
+                    <useXO>2</useXO>
+                    <ClangAsOpt>1</ClangAsOpt>
+                  </Aads>
                 </FileArmAds>
               </FileOption>
             </File>
@@ -737,54 +688,6 @@
               <FileName>stm32f4xx_hal_tim_ex.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_hal_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>1</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
           </Files>
         </Group>
